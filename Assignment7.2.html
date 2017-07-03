@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p id="help">Helpful notes will appear here</p>
+<p>Name: <input type="text" id="name" name="name"></p>
+<p>Age: <input type="text" id="age" name="age"></p>
+<p>City: <input type="text" id="city" name="city"></p>
+
+<script>
+function showHelp(help) {
+  document.getElementById('help').innerHTML = help;
+}
+
+function makeHelpCallback(help) {
+  return function() {
+    showHelp(help);
+  };
+}
+
+function setupHelp() {
+  var helpText = [
+      {'id': 'name', 
+      'help': 'please input the user name'
+     },
+      {'id': 'age', 
+      'help': 'please input the age'
+     },
+      {'id': 'city', 
+      'help': 'please input the city'
+      }
+    ];
+
+  for (var i = 0; i < helpText.length; i++) {
+    var item = helpText[i];
+    document.getElementById(item.id).onfocus =
+       makeHelpCallback(item.help);
+  }
+}
+
+setupHelp();
+</script>
+</body>
+</html>
+
+
+
+
